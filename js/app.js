@@ -24,9 +24,19 @@ let tie = false
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-    render()
+
 }
 console.log(init)
+// console.log(render)
+
+const render = () => {
+}
+
+const updateBoard = () => {
+    board.forEach((cell, idx) => {
+      });
+}
+console.log(updateBoard);
 
 /*----------------------------- Event Listeners -----------------------------*/
 
