@@ -1,5 +1,9 @@
 /*-------------------------------- Constants --------------------------------*/
 
+const squareEls = document.querySelectorAll('.board');
+
+
+
 /*---------------------------- Variables (state) ----------------------------*/
 
 let board
