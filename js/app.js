@@ -2,7 +2,11 @@
 
 const squareEls = document.querySelectorAll('.board');
 
+const messageEl = document.getElementById('message');
 
+console.log(squareEls)
+
+console.log(messageEl)
 
 /*---------------------------- Variables (state) ----------------------------*/
 
