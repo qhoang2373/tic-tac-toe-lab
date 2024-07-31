@@ -2,6 +2,11 @@
 
 /*---------------------------- Variables (state) ----------------------------*/
 
+let board
+let turn
+let winner 
+let tie 
+
 
 /*------------------------ Cached Element References ------------------------*/
 
