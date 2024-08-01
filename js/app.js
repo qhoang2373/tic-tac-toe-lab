@@ -27,7 +27,7 @@ const init = () => {
 
 }
 console.log(init)
-// console.log(render)
+console.log(render)
 
 const render = () => {
 }
