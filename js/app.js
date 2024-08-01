@@ -4,9 +4,6 @@ const squareEls = document.querySelectorAll('.sqr');
 
 const messageEl = document.getElementById('message');
 
-console.log(squareEls)
-console.log(messageEl)
-
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -17,6 +14,7 @@ let tie = false;
 
 /*------------------------ Cached Element References ------------------------*/
 
+const resetBtnEl = document.getElementById('reset');
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -30,9 +28,6 @@ const init = () => {
     render()
 
 }
-
-console.log(init);
-
 
 const render = () => {
   updateBoard();
@@ -111,12 +106,15 @@ function switchPlayerTurn() {
 }
 
 squareEls.forEach(square => {
- square.addEventListener('click', handleClick);
+  square.addEventListener('click', handleClick);
 }
 
 );
 
-init()
+resetBtnEl.addEventListener('click', init)
+
+init();
+
 
 
 
