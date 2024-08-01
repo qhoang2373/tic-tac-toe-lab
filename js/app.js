@@ -39,10 +39,16 @@ const updateBoard = () => {
 }
 console.log(updateBoard);
 
-// const updateMessage = () =>  {
-//   if()
+const updateMessage = () =>  {
+  if(!winner && !tie){
+      messageEl.textContent=`It's ${currentPlayer}'s turn`;
+  } else if (!winner && !tie) {
+      messageEl.textContent = "It's a tie!";
+  } else {
+      message.textContent = `${winner} wins!`;
+  }
 
-// }
+}
 
 /*----------------------------- Event Listeners -----------------------------*/
 
