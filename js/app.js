@@ -7,17 +7,6 @@ const messageEl = document.getElementById('message');
 console.log(squareEls)
 console.log(messageEl)
 
-const winningCombos = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5 ,8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
-
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -64,12 +53,72 @@ const updateMessage = () =>  {
   } else if (!winner && !tie) {
       messageEl.textContent = "It's a tie!";
   } else {
-      message.textContent = `${winner} wins!`;
+      message.textContent = `${winner} has won!`;
   }
-
 }
 
+function handleClick(event) {
+  const clickedSquare = event.target;
+  const squareIndex = parseInt(clickedSquare.id);
+
+  if (board[squareIndex] !== '') return;
+
+  placePiece(squareIndex);
+  checkForWinner();
+  checkForTie();
+  switchPlayerTurn();
+  render();
+}
+
+function placePiece(index) {
+  board[index] = turn;
+}
+
+function checkForWinner() {}
+  const winningCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+ 
+winningCombos.forEach(combo => {
+  if (
+    board[combo[0]] !== '' &&
+    board[combo[0]]   
+=== board[combo[1]] &&
+    board[combo[0]] === board[combo[2]]
+  ) {
+    winner = board[combo[0]];   
+
+  }
+});
+
+  function checkForTie() {
+    if (!winner && board.every(cell => cell !== '')) {
+      tie = true;
+    }
+  }
+
+function switchPlayerTurn() {
+  if (!winner) {
+    turn = turn === 'X' ? 'O': 'X';
+  }
+}
+
+squareEls.forEach(square => {
+ square.addEventListener('click', handleClick);
+}
+
+);
+
 init()
+
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -87,6 +136,8 @@ init()
 
 //6) Handle a player clicking a square with a `handleClick` function.
 
-//7) Create Reset functionality.
+//7) Create Reset functionality
+
+
 
 
