@@ -1,11 +1,10 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const squareEls = document.querySelectorAll('.board');
+const squareEls = document.querySelectorAll('.sqr');
 
 const messageEl = document.getElementById('message');
 
 console.log(squareEls)
-
 console.log(messageEl)
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -33,16 +32,17 @@ const render = () => {
 }
 
 const updateBoard = () => {
-    board.forEach((squareaEls, index) => {
+    board.forEach((cell, index) => {
+        squareEls[i].textContent = cell;
       });
 
 }
 console.log(updateBoard);
 
-const updateMessage = () =>  {
-  if()
+// const updateMessage = () =>  {
+//   if()
 
-}
+// }
 
 /*----------------------------- Event Listeners -----------------------------*/
 
