@@ -14,7 +14,6 @@ let turn = 'X';
 let winner = false;
 let tie = false;
 
-
 /*------------------------ Cached Element References ------------------------*/
 
 
@@ -23,25 +22,34 @@ let tie = false;
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
+  board = [
+    '','','',
+    '','','',
+    '','',''
+  ]
+    render()
 
 }
-console.log(init)
-console.log(render)
+
+console.log(init);
+
 
 const render = () => {
+  updateBoard();
+  updateMessage();
 }
 
 const updateBoard = () => {
     board.forEach((cell, index) => {
-        squareEls[i].textContent = cell;
+        squareEls[index].textContent = cell;
       });
 
 }
 console.log(updateBoard);
 
 const updateMessage = () =>  {
-  if(!winner && !tie){
-      messageEl.textContent=`It's ${currentPlayer}'s turn`;
+    if(!winner && !tie){
+      messageEl.textContent=`It's ${turn}'s turn`;
   } else if (!winner && !tie) {
       messageEl.textContent = "It's a tie!";
   } else {
@@ -49,6 +57,8 @@ const updateMessage = () =>  {
   }
 
 }
+
+init()
 
 /*----------------------------- Event Listeners -----------------------------*/
 
