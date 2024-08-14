@@ -1,56 +1,44 @@
-/*-------------------------------- Constants --------------------------------*/
-
 const squareEls = document.querySelectorAll('.sqr');
-
 const messageEl = document.getElementById('message');
-
+const resetBtnEl = document.getElementById('reset');
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let board = ['', '', '', '', '', '', '', '', '']
+let board = ['', '', '', '', '', '', '', '', ''];
 let turn = 'X';
 let winner = false;
 let tie = false;
 
-/*------------------------ Cached Element References ------------------------*/
-
-const resetBtnEl = document.getElementById('reset');
-
-
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-  board = [
-    '','','',
-    '','','',
-    '','',''
-  ]
-    render()
-
-}
+  board = ['', '', '', '', '', '', '', '', ''];
+  turn = 'X'; 
+  winner = false;
+  tie = false;
+  render();
+};
 
 const render = () => {
   updateBoard();
   updateMessage();
-}
+};
 
 const updateBoard = () => {
-    board.forEach((cell, index) => {
-        squareEls[index].textContent = cell;
-      });
+  board.forEach((cell, index) => {
+    squareEls[index].textContent = cell;
+  });
+};
 
-}
-console.log(updateBoard);
-
-const updateMessage = () =>  {
-    if(!winner && !tie){
-      messageEl.textContent=`It's ${turn}'s turn`;
-  } else if (!winner && !tie) {
-      messageEl.textContent = "It's a tie!";
-  } else {
-      message.textContent = `${winner} has won!`;
+const updateMessage = () => {
+  if (!winner && !tie) {
+    messageEl.textContent = `It's ${turn}'s turn`;
+  } else if (winner) {
+    messageEl.textContent = `${winner} has won!`;
+  } else if (tie) {
+    messageEl.textContent = "It's a tie!";
   }
-}
+};
 
 function handleClick(event) {
   const clickedSquare = event.target;
@@ -69,7 +57,7 @@ function placePiece(index) {
   board[index] = turn;
 }
 
-function checkForWinner() {}
+function checkForWinner() {
   const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -80,41 +68,37 @@ function checkForWinner() {}
     [0, 4, 8],
     [2, 4, 6]
   ];
- 
-winningCombos.forEach(combo => {
-  if (
-    board[combo[0]] !== '' &&
-    board[combo[0]]   
-=== board[combo[1]] &&
-    board[combo[0]] === board[combo[2]]
-  ) {
-    winner = board[combo[0]];   
 
+ for (let i = 0; i < winningCombos.length; i++)
+  {
+    const [a, b, c] = winningCombos[i];
+    if (board[a] === board[b] && board[b] === board[c] && board[a]
+      !== '') {
+           winner = board[a]; 
+           return;
+    } 
   }
-});
+}
 
-  function checkForTie() {
-    if (!winner && board.every(cell => cell !== '')) {
-      tie = true;
-    }
+function checkForTie() {
+  if (!winner && board.every(cell => cell !== '')) {
+    tie = true;
   }
+}
 
 function switchPlayerTurn() {
   if (!winner) {
-    turn = turn === 'X' ? 'O': 'X';
+    turn = turn === 'X' ? 'O' : 'X';
   }
 }
 
 squareEls.forEach(square => {
   square.addEventListener('click', handleClick);
-}
+});
 
-);
-
-resetBtnEl.addEventListener('click', init)
+resetBtnEl.addEventListener('click', init);
 
 init();
-
 
 
 
