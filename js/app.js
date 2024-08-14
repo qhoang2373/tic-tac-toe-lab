@@ -24,7 +24,11 @@ const render = () => {
   updateMessage();
 };
 
-
+const updateBoard = () => {
+  board.forEach((cell, index) => {
+    squareEls[index].textContent = cell;
+  });
+};
 
 const updateMessage = () => {
   if (!winner && !tie) {
